@@ -27,15 +27,13 @@ return capSources(await resolveProvider({ providers: this.searchProviders, confi
 
 ### GitHub/npm 安装
 
-这是给社区用户和希望用 `dsh plugin add <包名>` 的安装方式。需要以下条件之一：
-1. 已发布到 npm 的 `dsh-cascade-search`（之后可以用 npm 包名）；或
-2. 本插件的 GitHub 仓库（`Ryker0716/dsh-cascade-search`）。
+这是给社区用户和希望用 `dsh plugin add <包名>` 的安装方式。可选择官方 Git 仓库或 npm 包名：
 
 ```bash
 # GitHub 安装
 dsh plugin add github:Ryker0716/dsh-cascade-search
 
-# npm 安装（发布后可用）
+# npm 安装
 dsh plugin add dsh-cascade-search
 
 # 指定 web profile

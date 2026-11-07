@@ -1,0 +1,16 @@
+# Mounts the cascade search provider into the host composition.
+#
+# This patch runs in the *bundle* layer, which is applied before the user
+# profile. That ordering is why the plugin re-points `web.config.searchProvider`
+# at mount time (`adopt: true`) instead of trying to win here: a profile-level
+# pin would be applied afterwards and silently override any value set in this
+# file. See README §"Why adopt".
+- insert:
+    - id: cascade-search
+      name: dsh-cascade-search
+      config:
+        order:
+          - tavily
+          - querit
+          - deepseek
+        adopt: true

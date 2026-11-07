@@ -1,5 +1,9 @@
 # dsh-cascade-search
 
+[![npm version](https://img.shields.io/npm/v/dsh-cascade-search.svg?label=npm)](https://www.npmjs.com/package/dsh-cascade-search)
+[![Node.js >= 22](https://img.shields.io/badge/Node.js-%3E%3D22-339933.svg)](https://nodejs.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 给 DeepSeek Harness 的 `web_search` 加三级降级链的插件：
 
 ```
@@ -25,30 +29,43 @@ return capSources(await resolveProvider({ providers: this.searchProviders, confi
 
 ## 安装
 
-### GitHub/npm 安装
+### npm 安装（推荐）
 
-这是给社区用户和希望用 `dsh plugin add <包名>` 的安装方式。可选择官方 Git 仓库或 npm 包名：
+当前已发布到 npm 官方仓库：[dsh-cascade-search](https://www.npmjs.com/package/dsh-cascade-search)，版本 **1.2.1**。
+
+在 CLI 管理的 `web` profile 中安装：
 
 ```bash
-# GitHub 安装
-dsh plugin add github:Ryker0716/dsh-cascade-search
-
-# npm 安装
-dsh plugin add dsh-cascade-search
-
-# 指定 web profile
-dsh plugin --profile web add github:Ryker0716/dsh-cascade-search
-# 或
 dsh plugin --profile web add dsh-cascade-search
 ```
 
+这条命令会从 npm 下载插件、加入 profile 的依赖并自动登记 bundle；**不需要**事先执行全局的 `npm install -g` 或切换 npm 默认镜像。
+
+桌面 profile 需按[下方手动安装](#在桌面端所在的-profile-手动安装)说明修改依赖和 bundle；如果通过本仓库目录开发、运行测试或包装普通 Node.js 依赖，可用：
+
+```bash
+npm install dsh-cascade-search
+# 或
+pnpm add dsh-cascade-search
+```
+
+对 DSH 用户仍优先使用 `dsh plugin --profile web add dsh-cascade-search`，因为它会同时处理插件注册。
+
 安装后**重启** DSH；在 **插件 → 已安装插件 → dsh-cascade-search** 进行凭据和链配置。
+
+### GitHub 源码安装（备选）
+
+```bash
+dsh plugin --profile web add github:Ryker0716/dsh-cascade-search
+```
+
+源码安装默认读取仓库尚未发布的最新代码，需要固定版本时优先使用上面的 npm 包。
 
 ### 接收压缩包的人
 
 > 本插件的开发主版本以 GitHub/npm 发布为准；ZIP 只是为了在本机传递或初始导入方便。
 >
-> **离线 ZIP 接收方**请按这一节安装；其他人用 GitHub/npm 安装见 [GitHub/npm 安装](#githubnpm-安装)。
+> **离线 ZIP 接收方**请按这一节安装；其他人用 npm/GitHub 见 [npm 安装](#npm-安装推荐)。
 
 
 先解压 ZIP 到一个**固定目录**，例如 `~/dsh-cascade-search`，然后使用对应 profile 的插件管理命令：
